@@ -1,12 +1,11 @@
-import { ThemeProvider } from 'styled-components'
-import { themes } from './themes'
+import { ThemeContextProvider } from './themes/ThemeContext'
 import { GlobalStyles } from './styles/GlobalStyles'
 
 export function Providers({ children }) {
   return (
-    <ThemeProvider theme={themes['light']}>
+    <ThemeContextProvider>
       {children}
       <GlobalStyles />
-    </ThemeProvider>
+    </ThemeContextProvider>
   )
 }
