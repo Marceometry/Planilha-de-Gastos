@@ -1,9 +1,11 @@
-import { Header } from './components'
+import { AppWrapper } from './styles/GlobalStyles'
+import { Header, Table } from './components'
 
 export default function App() {
   return (
-    <div>
+    <AppWrapper>
       <Header />
-    </div>
+      <Table />
+    </AppWrapper>
   )
 }

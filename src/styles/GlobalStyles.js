@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -19,4 +19,8 @@ export const GlobalStyles = createGlobalStyle`
     all: unset;
     cursor: pointer;
   }
+`
+
+export const AppWrapper = styled.div`
+  height: 100vh;
 `
