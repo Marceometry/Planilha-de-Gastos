@@ -1,11 +1,18 @@
-import { AppWrapper } from './styles/GlobalStyles'
-import { Header, Table } from './components'
+import { AppWrapper, Content, Main } from './styles/Containers'
+import { Sidebar, Header, Table } from './components'
 
 export default function App() {
   return (
     <AppWrapper>
-      <Header />
-      <Table />
+      <Sidebar />
+
+      <Main>
+        <Header />
+
+        <Content>
+          <Table />
+        </Content>
+      </Main>
     </AppWrapper>
   )
 }

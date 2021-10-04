@@ -5,11 +5,11 @@ const StyledButton = styled.button`
   padding: 8px 24px;
   border-radius: 8px;
 
-  border: 1px solid ${({ theme }) => theme.oppositeBackground};
+  border: 1px solid ${({ theme }) => theme.fontColor};
   color: ${({ theme, outlined }) =>
     outlined ? theme.fontColor : theme.primaryBackground};
   background-color: ${({ theme, outlined }) =>
-    outlined ? 'none' : theme.oppositeBackground};
+    outlined ? 'none' : theme.fontColor};
 
   &:hover {
     color: ${({ theme }) => theme.colors.white};

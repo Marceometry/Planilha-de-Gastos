@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -15,12 +15,12 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.primaryBackground};
   }
 
+  h1 {
+    font-size: 2rem;
+  }
+
   button, a {
     all: unset;
     cursor: pointer;
   }
-`
-
-export const AppWrapper = styled.div`
-  height: 100vh;
 `

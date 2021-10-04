@@ -7,7 +7,7 @@ export function Header() {
 
   return (
     <StyledHeader>
-      <h1>Planilha de Gastos</h1>
+      <h1>Mensal</h1>
 
       <Button onClick={toggleTheme}>Toggle Theme</Button>
     </StyledHeader>

@@ -9,14 +9,14 @@ export const themes = {
     colors,
     fontColor: '#111',
     primaryBackground: '#eee',
-    secondaryBackground: '#ccc',
-    oppositeBackground: '#111',
+    secondaryBackground: '#f0f0f0',
+    borderColor: '#111',
   },
   dark: {
     colors,
     fontColor: '#eee',
     primaryBackground: '#333',
     secondaryBackground: '#222',
-    oppositeBackground: '#eee',
+    borderColor: '#aaa',
   },
 }
