@@ -1,18 +1,10 @@
-import { AppWrapper, Content, Main } from './styles/Containers'
-import { Sidebar, Header, Table } from './components'
+import { Layout } from './layout'
+import { Routes } from './routes'
 
 export default function App() {
   return (
-    <AppWrapper>
-      <Sidebar />
-
-      <Main>
-        <Header />
-
-        <Content>
-          <Table />
-        </Content>
-      </Main>
-    </AppWrapper>
+    <Layout>
+      <Routes />
+    </Layout>
   )
 }

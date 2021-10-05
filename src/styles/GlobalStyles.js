@@ -9,6 +9,10 @@ export const GlobalStyles = createGlobalStyle`
     transition-duration: 0.2s;
   }
 
+  *:focus {
+    outline: 2px solid ${({ theme }) => theme.colors.primary};
+  }
+
   body {
     font: 400 16px sans-serif;
     color: ${({ theme }) => theme.fontColor};
@@ -20,7 +24,19 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   button, a {
-    all: unset;
+    border: none;
+    color: inherit;
+    background: inherit;
+    font-size: inherit;
     cursor: pointer;
+  }
+
+  input {
+    padding: 1rem 1.5rem;
+    width: 100%;
+    color: inherit;
+    font: inherit;
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    background: ${({ theme }) => theme.secondaryBackground};
   }
 `

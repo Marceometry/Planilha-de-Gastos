@@ -1,8 +1,13 @@
 import styled from 'styled-components'
 
-const cellPadding = '24px 32px'
+const cellPadding = '1.5rem 2rem'
+const asButtonPadding = '.25rem 2rem'
 
-export const Row = styled.tr``
+export const Row = styled.tr`
+  &:nth-child(even) {
+    background: ${({ theme }) => theme.primaryBackground};
+  }
+`
 
 export const Header = styled.th`
   padding: ${cellPadding};
@@ -10,15 +15,15 @@ export const Header = styled.th`
 `
 
 export const Cell = styled.td`
-  padding: ${({ isChangeable }) => (isChangeable ? 0 : cellPadding)};
   border: 1px solid ${({ theme }) => theme.borderColor};
+  width: ${({ asButton }) => (asButton ? 'fit-content' : '')};
+  text-align: ${({ asButton }) => (asButton ? 'center' : '')};
+  padding: ${({ isChangeable, asButton }) =>
+    isChangeable ? 0 : asButton ? asButtonPadding : cellPadding};
 `
 
 export const Input = styled.input`
   padding: ${cellPadding};
-  width: 100%;
-  color: inherit;
-  font: inherit;
   border: none;
   background: transparent;
 `

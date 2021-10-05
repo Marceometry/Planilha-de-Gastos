@@ -1,10 +1,31 @@
 import styled from 'styled-components'
 
 export const Sidebar = styled.aside`
-  /* width: 330px; */
   height: 100vh;
-  padding: 2rem;
-  /* z-index: 0; */
   border-right: 1px solid ${({ theme }) => theme.borderColor};
   background: ${({ theme }) => theme.secondaryBackground};
+`
+
+export const Title = styled.div`
+  padding: 2rem;
+  border-bottom: 1px solid ${({ theme }) => theme.borderColor};
+`
+
+export const Nav = styled.nav`
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+`
+
+export const Link = styled.a`
+  width: 100%;
+  padding: 1rem;
+  padding-left: 3rem;
+  font-size: 1.25rem;
+  font-weight: ${({ active }) => active && 'bold'};
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.primaryBackground};
+  }
 `

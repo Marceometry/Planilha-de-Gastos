@@ -5,7 +5,7 @@ const StyledButton = styled.button`
   padding: 8px 24px;
   border-radius: 8px;
 
-  border: 1px solid ${({ theme }) => theme.fontColor};
+  border: 1px solid ${({ theme }) => theme.borderColor};
   color: ${({ theme, outlined }) =>
     outlined ? theme.fontColor : theme.primaryBackground};
   background-color: ${({ theme, outlined }) =>
