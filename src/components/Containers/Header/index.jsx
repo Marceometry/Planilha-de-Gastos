@@ -2,33 +2,43 @@ import { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { useExpenses } from '../../../contexts'
 import { ThemeToggler } from '../../Elements/ThemeToggler'
-import { StyledHeader } from './styles'
+import { StyledHeader, Input } from './styles'
 
 export function Header() {
-  const [pageTitle, setPageTitle] = useState('')
-  const { expenses, getTableById } = useExpenses()
+  const [headerTitle, setHeaderTitle] = useState('')
+  const [hasPage, setHasPage] = useState(false)
+  const { expenses, getTableById, editTableName } = useExpenses()
   const history = useHistory()
   const { id } = useParams()
 
   useEffect(() => {
     if (history.location.pathname === '/') {
-      setPageTitle('Todas')
+      setHeaderTitle('Todas as tabelas')
       return
     }
 
     const table = getTableById(id)
 
     if (!table) {
-      setPageTitle('Tabela inexistente')
+      setHeaderTitle('Tabela não encontrada')
       return
     }
 
-    setPageTitle(table.name)
+    setHasPage(true)
+    setHeaderTitle(table.name)
   }, [expenses, id, history.location.pathname])
 
   return (
     <StyledHeader>
-      <h1>{pageTitle}</h1>
+      {hasPage ? (
+        <Input
+          type='text'
+          value={headerTitle}
+          onChange={(e) => editTableName(id, e.target.value)}
+        />
+      ) : (
+        <h1>{headerTitle}</h1>
+      )}
 
       <ThemeToggler />
     </StyledHeader>

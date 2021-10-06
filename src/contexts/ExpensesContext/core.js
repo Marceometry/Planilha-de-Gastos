@@ -26,6 +26,15 @@ export function addTable(expenses, name) {
   return { data, id }
 }
 
+export function editTableName(expenses, tableId, name) {
+  const data = expenses.map((item) => {
+    if (item.id !== tableId) return item
+    return { ...item, name: name }
+  })
+
+  return data
+}
+
 export function deleteTable(expenses, tableId) {
   return expenses.filter((item) => item.id !== tableId)
 }

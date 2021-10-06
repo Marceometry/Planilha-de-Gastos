@@ -3,6 +3,7 @@ import { initialData } from './utils'
 import {
   getTableById as getTableCallback,
   addTable as addTableCallback,
+  editTableName as editTableNameCallback,
   deleteTable as deleteTableCallback,
   addItem as addItemCallback,
   editExpense as editExpenseCallback,
@@ -29,6 +30,11 @@ export function ExpensesProvider({ children }) {
     const { data, id } = addTableCallback(expenses, name)
     setExpenses(data)
     return id
+  }
+
+  function editTableName(tableId, name) {
+    const data = editTableNameCallback(expenses, tableId, name)
+    setExpenses(data)
   }
 
   function deleteTable(id) {
@@ -73,6 +79,7 @@ export function ExpensesProvider({ children }) {
         expenses,
         getTableById,
         addTable,
+        editTableName,
         deleteTable,
         addItem,
         editExpense,

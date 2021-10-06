@@ -8,3 +8,11 @@ export const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
 `
+
+export const Input = styled.input`
+  width: fit-content;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 0;
+  border: none;
+`

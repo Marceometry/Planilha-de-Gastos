@@ -9,6 +9,7 @@ import {
 export function Table() {
   const {
     expenses,
+    editTableName,
     deleteTable,
     getFormattedPrice,
     getTotalExpense,
@@ -22,7 +23,9 @@ export function Table() {
     <TableWrapper headers={['Tabela', 'Custo', 'Itens']}>
       {expenses.map(({ id, name, items, totalExpense }) => (
         <Row key={id}>
-          <Cell>{name}</Cell>
+          <Cell isChangeable onChange={(value) => editTableName(id, value)}>
+            {name}
+          </Cell>
 
           <Cell>{getFormattedPrice(totalExpense)}</Cell>
 
