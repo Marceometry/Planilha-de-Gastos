@@ -7,6 +7,11 @@ export const Wrapper = styled.div`
   margin-bottom: 3rem;
 `
 
-export const Input = styled.input`
-  border-radius: 4px;
+export const Inputs = styled.div`
+  display: flex;
+  gap: 1rem;
+
+  input {
+    border-radius: 4px;
+  }
 `

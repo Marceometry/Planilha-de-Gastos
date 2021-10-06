@@ -6,6 +6,8 @@ export function Table({ tableId }) {
   const { expenses, editExpense, deleteExpense, getFormattedPrice } =
     useExpenses()
 
+  if (!expenses[tableId]) return <h1>Erro :,(</h1>
+
   const items = expenses[tableId].items
 
   if (!items.length) return <h1>Não há nada aqui {':('}</h1>

@@ -1,22 +1,30 @@
 import { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
+import { useExpenses } from '../../contexts/ExpensesContext'
 import { useTheme } from '../../themes/ThemeContext'
-import { routes } from '../../pages'
 import { Button } from '../'
 import { StyledHeader } from './styles'
 
 export function Header() {
   const [pageTitle, setPageTitle] = useState('')
+  const { expenses } = useExpenses()
   const { toggleTheme } = useTheme()
   const history = useHistory()
+  const { id } = useParams()
 
   useEffect(() => {
-    const currentRoute = routes.find(
-      (item) => item.path === history.location.pathname
-    )
+    if (history.location.pathname === '/') {
+      setPageTitle('Todas')
+      return
+    }
 
-    setPageTitle(currentRoute.title)
-  }, [routes])
+    if (!expenses[id]) {
+      setPageTitle('Tabela inexistente')
+      return
+    }
+
+    setPageTitle(expenses[id].name)
+  }, [expenses, id, history.location.pathname])
 
   return (
     <StyledHeader>

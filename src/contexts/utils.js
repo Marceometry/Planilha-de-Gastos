@@ -1,3 +1,23 @@
+import { v4 } from 'uuid'
+
+export const generateId = () => v4()
+
+export function addTable(expenses, name) {
+  const id = generateId()
+
+  const data = {
+    ...expenses,
+    [id]: {
+      id,
+      name,
+      items: [],
+      totalExpense: 0,
+    },
+  }
+
+  return { data, id }
+}
+
 export function addItem(expenses, tableId, { name, price }) {
   if (!tableId || !name || !price) return
 
@@ -8,7 +28,7 @@ export function addItem(expenses, tableId, { name, price }) {
     {
       name,
       price: priceStringToNumber,
-      id: expenses[tableId].items.length,
+      id: generateId(),
     },
   ]
 

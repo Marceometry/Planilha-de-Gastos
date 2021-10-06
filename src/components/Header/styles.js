@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledHeader = styled.header`
-  padding: 32px 64px;
+  padding: 2rem 3rem;
   background: ${({ theme }) => theme.secondaryBackground};
   border-bottom: 1px solid ${({ theme }) => theme.borderColor};
   display: flex;

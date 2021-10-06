@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Home } from './pages'
+import { Home, Table } from './pages'
 
 export function Router() {
   return (
@@ -7,6 +7,9 @@ export function Router() {
       <Switch>
         <Route path='/' exact>
           <Home />
+        </Route>
+        <Route path='/tables/:id' exact>
+          <Table />
         </Route>
       </Switch>
     </BrowserRouter>

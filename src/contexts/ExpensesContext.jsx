@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from 'react'
 import {
   initialData,
+  addTable as addTableCallback,
   addItem as addItemCallback,
   editExpense as editExpenseCallback,
   deleteExpense as deleteExpenseCallback,
@@ -10,6 +11,12 @@ export const ExpensesContext = createContext({})
 
 export function ExpensesProvider({ children }) {
   const [expenses, setExpenses] = useState(initialData)
+
+  function addTable(name) {
+    const { data, id } = addTableCallback(expenses, name)
+    setExpenses(data)
+    return id
+  }
 
   function addItem(tableId, { name, price }) {
     const data = addItemCallback(expenses, tableId, { name, price })
@@ -34,6 +41,7 @@ export function ExpensesProvider({ children }) {
     <ExpensesContext.Provider
       value={{
         expenses,
+        addTable,
         addItem,
         editExpense,
         deleteExpense,
