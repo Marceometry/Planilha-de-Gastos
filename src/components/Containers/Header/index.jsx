@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { useExpenses } from '../../contexts/ExpensesContext'
-import { useTheme } from '../../themes/ThemeContext'
-import { Button } from '../'
+import { useExpenses } from '../../../contexts'
+import { ThemeToggler } from '../../Elements/ThemeToggler'
 import { StyledHeader } from './styles'
 
 export function Header() {
   const [pageTitle, setPageTitle] = useState('')
   const { expenses, getTableById } = useExpenses()
-  const { toggleTheme } = useTheme()
   const history = useHistory()
   const { id } = useParams()
 
@@ -32,7 +30,7 @@ export function Header() {
     <StyledHeader>
       <h1>{pageTitle}</h1>
 
-      <Button onClick={toggleTheme}>Toggle Theme</Button>
+      <ThemeToggler />
     </StyledHeader>
   )
 }

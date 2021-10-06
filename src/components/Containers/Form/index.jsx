@@ -1,4 +1,4 @@
-import { Button } from '..'
+import { Button } from '../../'
 import * as S from './styles'
 
 export function Form({ children, onSubmit }) {

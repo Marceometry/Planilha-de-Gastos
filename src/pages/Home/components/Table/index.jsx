@@ -1,4 +1,4 @@
-import { useExpenses } from '../../../../contexts/ExpensesContext'
+import { useExpenses } from '../../../../contexts'
 import { Table as TableWrapper, Row, Cell } from '../../../../components'
 
 export function Table() {

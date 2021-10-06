@@ -1,6 +1,5 @@
-import { ThemeContextProvider } from './themes/ThemeContext'
+import { ExpensesProvider, ThemeContextProvider } from './contexts'
 import { GlobalStyles } from './styles/GlobalStyles'
-import { ExpensesProvider } from './contexts/ExpensesContext'
 
 export function Providers({ children }) {
   return (

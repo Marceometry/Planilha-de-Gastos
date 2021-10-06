@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom'
-import { useExpenses } from '../../contexts/ExpensesContext'
+import { useExpenses } from '../../../contexts'
 import * as S from './styles'
 
 export function Sidebar() {

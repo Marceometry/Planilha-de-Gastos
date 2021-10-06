@@ -1,6 +1,6 @@
 import { useParams } from 'react-router'
-import { useExpenses } from '../../contexts/ExpensesContext'
-import { Layout } from '../../layout'
+import { useExpenses } from '../../contexts'
+import { Layout } from '../../components'
 import { Form, Table } from './components'
 
 export function TablePage() {

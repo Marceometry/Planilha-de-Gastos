@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useExpenses } from '../../../../contexts/ExpensesContext'
+import { useExpenses } from '../../../../contexts'
 import { Form as FormWrapper } from '../../../../components'
 
 export function Form({ tableId: id }) {

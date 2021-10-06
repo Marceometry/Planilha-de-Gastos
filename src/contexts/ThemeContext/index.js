@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { themes } from './themes'
+import { themes } from '../../themes'
 
 export const ThemeContext = createContext({})
 
@@ -20,9 +20,7 @@ export function ThemeContextProvider({ children }) {
 
   return (
     <ThemeContext.Provider value={{ currentTheme, toggleTheme }}>
-      <ThemeProvider theme={themes[currentTheme]}>
-        {children}
-      </ThemeProvider>
+      <ThemeProvider theme={themes[currentTheme]}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   )
 }

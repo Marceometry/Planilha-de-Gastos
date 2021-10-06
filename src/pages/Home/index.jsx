@@ -1,4 +1,4 @@
-import { Layout } from '../../layout'
+import { Layout } from '../../components'
 import { Form, Table } from './components'
 
 export function Home() {

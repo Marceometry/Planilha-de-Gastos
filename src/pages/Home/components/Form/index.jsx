@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router'
-import { useExpenses } from '../../../../contexts/ExpensesContext'
+import { useExpenses } from '../../../../contexts'
 import { Form as FormWrapper } from '../../../../components'
 
 export function Form() {
