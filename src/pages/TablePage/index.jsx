@@ -1,6 +1,6 @@
 import { useParams } from 'react-router'
 import { useExpenses } from '../../contexts'
-import { Layout } from '../../components'
+import { ErrorMessage, Layout } from '../../components'
 import { Form, Table } from './components'
 
 export function TablePage() {
@@ -17,7 +17,7 @@ export function TablePage() {
           <Table table={table} />
         </>
       ) : (
-        <h1>Erro</h1>
+        <ErrorMessage>Tabela não encontrada {':,('}</ErrorMessage>
       )}
     </Layout>
   )

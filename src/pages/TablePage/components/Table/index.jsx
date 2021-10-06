@@ -1,12 +1,18 @@
 import { useExpenses } from '../../../../contexts'
-import { Table as TableWrapper, Row, Cell } from '../../../../components'
+import {
+  Table as TableWrapper,
+  Row,
+  Cell,
+  ErrorMessage,
+} from '../../../../components'
 
 export function Table({ table }) {
   const { editExpense, deleteExpense, getFormattedPrice } = useExpenses()
 
   const items = table.items
 
-  if (!items.length) return <h1>Não há nada aqui {':('}</h1>
+  if (!items.length)
+    return <ErrorMessage>Não há nada aqui por enquanto {':('}</ErrorMessage>
 
   return (
     <TableWrapper headers={['Item', 'Preço']}>

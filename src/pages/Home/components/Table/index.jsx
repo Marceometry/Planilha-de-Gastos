@@ -1,5 +1,10 @@
 import { useExpenses } from '../../../../contexts'
-import { Table as TableWrapper, Row, Cell } from '../../../../components'
+import {
+  Table as TableWrapper,
+  Row,
+  Cell,
+  ErrorMessage,
+} from '../../../../components'
 
 export function Table() {
   const {
@@ -10,7 +15,8 @@ export function Table() {
     getTotalItems,
   } = useExpenses()
 
-  if (!expenses.length) return <h1>Não há nenhuma tabela ainda {':('}</h1>
+  if (!expenses.length)
+    return <ErrorMessage>Não há nenhuma tabela ainda {':('}</ErrorMessage>
 
   return (
     <TableWrapper headers={['Tabela', 'Custo', 'Itens']}>
