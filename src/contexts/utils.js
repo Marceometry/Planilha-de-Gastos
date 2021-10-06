@@ -2,99 +2,28 @@ import { v4 } from 'uuid'
 
 export const generateId = () => v4()
 
-export function addTable(expenses, name) {
-  const id = generateId()
-
-  const data = {
-    ...expenses,
-    [id]: {
-      id,
-      name,
-      items: [],
-      totalExpense: 0,
-    },
-  }
-
-  return { data, id }
+export function getIndexOfTable(expenses, id) {
+  return expenses.findIndex((item) => item.id === id)
 }
 
-export function addItem(expenses, tableId, { name, price }) {
-  if (!tableId || !name || !price) return
+export function updateExpenses(expenses, tableId, items, totalExpense) {
+  return expenses.map((item) => {
+    if (item.id !== tableId) return item
 
-  const priceStringToNumber = Number(price)
-
-  const items = [
-    ...expenses[tableId].items,
-    {
-      name,
-      price: priceStringToNumber,
-      id: generateId(),
-    },
-  ]
-
-  const totalExpense = getTotalPrice(items)
-
-  return {
-    ...expenses,
-    [tableId]: {
-      ...expenses[tableId],
-      totalExpense,
-      items,
-    },
-  }
-}
-
-export function editExpense(expenses, tableId, { name, price, id }) {
-  const items = expenses[tableId].items
-
-  const editedArray = items.map((item) => {
-    if (item.id !== id) return item
-
-    return { name, price, id }
+    return { ...item, items, totalExpense }
   })
-
-  const totalExpense = getTotalPrice(items)
-
-  return {
-    ...expenses,
-    [tableId]: {
-      ...expenses[tableId],
-      items: [...editedArray],
-      totalExpense,
-    },
-  }
-}
-
-export function deleteExpense(expenses, tableId, itemId) {
-  const items = expenses[tableId].items.filter((item) => item.id !== itemId)
-
-  const totalExpense = getTotalPrice(items)
-
-  return {
-    ...expenses,
-    [tableId]: {
-      ...expenses[tableId],
-      items: [...items],
-      totalExpense,
-    },
-  }
 }
 
 export function getTotalPrice(items) {
   const totalPrice = items.reduce((total, item) => {
     return total + item.price
   }, 0)
-  return totalPrice.toFixed(2)
+
+  return Number(totalPrice.toFixed(2))
 }
 
-// export function findIndexOfTableById(id, expenses) {
-//   if (!id || expenses.length === 0) return
-
-//   return expenses.findIndex((item) => item.id !== id)
-// }
-
-export const initialData = {
-  1: {
+export const initialData = [
+  {
     id: '1',
     name: 'Mensal',
     items: [
@@ -106,7 +35,7 @@ export const initialData = {
     ],
     totalExpense: 26.2,
   },
-  2: {
+  {
     id: '2',
     name: 'Unitário',
     items: [
@@ -118,4 +47,4 @@ export const initialData = {
     ],
     totalExpense: 0,
   },
-}
+]

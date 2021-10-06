@@ -7,7 +7,7 @@ import { StyledHeader } from './styles'
 
 export function Header() {
   const [pageTitle, setPageTitle] = useState('')
-  const { expenses } = useExpenses()
+  const { expenses, getTableById } = useExpenses()
   const { toggleTheme } = useTheme()
   const history = useHistory()
   const { id } = useParams()
@@ -18,12 +18,14 @@ export function Header() {
       return
     }
 
-    if (!expenses[id]) {
+    const table = getTableById(id)
+
+    if (!table) {
       setPageTitle('Tabela inexistente')
       return
     }
 
-    setPageTitle(expenses[id].name)
+    setPageTitle(table.name)
   }, [expenses, id, history.location.pathname])
 
   return (

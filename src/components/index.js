@@ -1,5 +1,5 @@
 export { Sidebar } from './Sidebar'
 export { Header } from './Header'
 export { Button } from './Button'
-export { Table } from './Table'
 export { Form } from './Form'
+export { Table, Row, Cell } from './Table'

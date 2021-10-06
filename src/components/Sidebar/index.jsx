@@ -1,20 +1,10 @@
-import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useExpenses } from '../../contexts/ExpensesContext'
 import * as S from './styles'
 
 export function Sidebar() {
   const { expenses } = useExpenses()
-  const [routes, setRoutes] = useState([])
   const history = useHistory()
-
-  useEffect(() => {
-    let array = []
-    for (let key in expenses) {
-      array.push(expenses[key])
-    }
-    setRoutes(array)
-  }, [expenses])
 
   return (
     <S.Sidebar>
@@ -30,7 +20,7 @@ export function Sidebar() {
           Todas
         </S.Link>
 
-        {routes?.map((item) => (
+        {expenses?.map((item) => (
           <S.Link
             key={item.id}
             onClick={() => history.push(`/tables/${item.id}`)}

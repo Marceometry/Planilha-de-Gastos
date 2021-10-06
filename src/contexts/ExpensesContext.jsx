@@ -1,21 +1,32 @@
 import { createContext, useContext, useState } from 'react'
+import { initialData } from './utils'
 import {
-  initialData,
+  getTableById as getTableCallback,
   addTable as addTableCallback,
+  deleteTable as deleteTableCallback,
   addItem as addItemCallback,
   editExpense as editExpenseCallback,
   deleteExpense as deleteExpenseCallback,
-} from './utils'
+} from './core'
 
 export const ExpensesContext = createContext({})
 
 export function ExpensesProvider({ children }) {
   const [expenses, setExpenses] = useState(initialData)
 
+  function getTableById(tableId) {
+    return getTableCallback(expenses, tableId)
+  }
+
   function addTable(name) {
     const { data, id } = addTableCallback(expenses, name)
     setExpenses(data)
     return id
+  }
+
+  function deleteTable(id) {
+    const data = deleteTableCallback(expenses, id)
+    setExpenses(data)
   }
 
   function addItem(tableId, { name, price }) {
@@ -33,6 +44,18 @@ export function ExpensesProvider({ children }) {
     setExpenses(data)
   }
 
+  function getTotalExpense() {
+    return expenses.reduce((totalExpense, item) => {
+      return totalExpense + item.totalExpense
+    }, 0)
+  }
+
+  function getTotalItems() {
+    return expenses.reduce((totalItems, item) => {
+      return totalItems + item.items.length
+    }, 0)
+  }
+
   function getFormattedPrice(price) {
     return `R$ ${price}`
   }
@@ -41,11 +64,15 @@ export function ExpensesProvider({ children }) {
     <ExpensesContext.Provider
       value={{
         expenses,
+        getTableById,
         addTable,
+        deleteTable,
         addItem,
         editExpense,
         deleteExpense,
         getFormattedPrice,
+        getTotalExpense,
+        getTotalItems,
       }}
     >
       {children}
