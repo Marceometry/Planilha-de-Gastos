@@ -1,10 +1,9 @@
-// import { Link } from 'react-router-dom'
 import * as S from './styles'
 
 const pages = [
-  { title: 'Todas', link: '/' },
-  { title: 'Mensal', link: '/mensal' },
-  { title: 'Unitário', link: '/unitário' },
+  { title: 'Total', path: '/' },
+  { title: 'Mensal', path: '/mensal' },
+  { title: 'Unitário', path: '/unitário' },
 ]
 
 export function Sidebar() {
@@ -18,8 +17,8 @@ export function Sidebar() {
         {pages?.map((item) => (
           <S.Link
             key={item.title}
-            to={`/${item.link}`}
-            active={item.link === '/mensal'}
+            to={`${item.path}`}
+            active={item.path === '/mensal'}
           >
             {item.title}
           </S.Link>

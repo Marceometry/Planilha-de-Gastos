@@ -1,10 +1,5 @@
-import { Layout } from './layout'
-import { Routes } from './routes'
+import { Router } from './router'
 
 export default function App() {
-  return (
-    <Layout>
-      <Routes />
-    </Layout>
-  )
+  return <Router />
 }

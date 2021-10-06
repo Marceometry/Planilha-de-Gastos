@@ -4,9 +4,11 @@ import { ExpensesProvider } from './contexts/ExpensesContext'
 
 export function Providers({ children }) {
   return (
-    <ThemeContextProvider>
-      <ExpensesProvider>{children}</ExpensesProvider>
-      <GlobalStyles />
-    </ThemeContextProvider>
+    <ExpensesProvider>
+      <ThemeContextProvider>
+        {children}
+        <GlobalStyles />
+      </ThemeContextProvider>
+    </ExpensesProvider>
   )
 }

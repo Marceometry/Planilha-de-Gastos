@@ -1,3 +1,4 @@
+import { Link as a } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Sidebar = styled.aside`
@@ -17,12 +18,14 @@ export const Nav = styled.nav`
   flex-direction: column;
 `
 
-export const Link = styled.a`
+export const Link = styled(a)`
   width: 100%;
   padding: 1rem;
   padding-left: 3rem;
   font-size: 1.25rem;
   font-weight: ${({ active }) => active && 'bold'};
+  filter: ${({ active }) => active && 'brightness(1.1)'};
+  background-color: ${({ theme, active }) => active && theme.primaryBackground};
   transition: background-color 0.2s;
 
   &:hover {

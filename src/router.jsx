@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Monthly } from '../pages'
+import { Monthly } from './pages'
 
-export function Routes() {
+export function Router() {
   return (
     <BrowserRouter>
       <Switch>
