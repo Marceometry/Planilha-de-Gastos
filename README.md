@@ -24,11 +24,16 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Este app tem o objetivo de organizar os gastos mensais e específicos do usuário, feito com ReactJS e Styled-Components.
+Este app tem o objetivo de organizar os gastos do usuário, totalmente customizável, feito com ReactJS e Styled-Components.
 
 ## 💣 Funcionalidades
 
 - Tema dark e light
+- Adicionar novas tabelas
+- Adicionar itens nas tabelas
+- Editar os nomes e preços dos itens
+- Editar nome da tabela
+- Navegação dinâmica utilizando react-router-dom.
 
 ## 🚀 Como executar
 
