@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { initialData } from './utils'
 import {
   getTableById as getTableCallback,
@@ -12,7 +12,14 @@ import {
 export const ExpensesContext = createContext({})
 
 export function ExpensesProvider({ children }) {
-  const [expenses, setExpenses] = useState(initialData)
+  const [expenses, setExpenses] = useState(() => {
+    const storedData = localStorage.getItem('expenses')
+    return JSON.parse(storedData) || initialData
+  })
+
+  useEffect(() => {
+    localStorage.setItem('expenses', JSON.stringify(expenses))
+  }, [expenses])
 
   function getTableById(tableId) {
     return getTableCallback(expenses, tableId)
