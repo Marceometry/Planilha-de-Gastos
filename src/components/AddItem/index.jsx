@@ -5,7 +5,7 @@ import * as S from './styles'
 
 export function AddItem() {
   const [item, setItem] = useState({ name: '', price: '' })
-  const { AddItem } = useExpenses()
+  const { addItem } = useExpenses()
 
   return (
     <S.Wrapper>
@@ -23,7 +23,7 @@ export function AddItem() {
         placeholder='Preço do item'
       />
 
-      <Button outlined onClick={() => AddItem(item.name, Number(item.price))}>
+      <Button outlined onClick={() => addItem('1', item)}>
         Adicionar
       </Button>
     </S.Wrapper>
