@@ -1,12 +1,10 @@
+import { useHistory } from 'react-router-dom'
+import { routes } from '../../pages'
 import * as S from './styles'
 
-const pages = [
-  { title: 'Total', path: '/' },
-  { title: 'Mensal', path: '/mensal' },
-  { title: 'Unitário', path: '/unitário' },
-]
-
 export function Sidebar() {
+  const history = useHistory()
+
   return (
     <S.Sidebar>
       <S.Title>
@@ -14,11 +12,11 @@ export function Sidebar() {
       </S.Title>
 
       <S.Nav>
-        {pages?.map((item) => (
+        {routes?.map((item) => (
           <S.Link
             key={item.title}
-            to={`${item.path}`}
-            active={item.path === '/mensal'}
+            onClick={() => history.push(`${item.path}`)}
+            active={item.path === history.location.pathname}
           >
             {item.title}
           </S.Link>

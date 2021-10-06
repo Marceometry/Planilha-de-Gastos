@@ -2,11 +2,11 @@ import { useExpenses } from '../../contexts/ExpensesContext'
 import { Row, Header, Cell } from './components'
 import * as S from './styles'
 
-export function Table() {
+export function Table({ tableId }) {
   const { expenses, editExpense, deleteExpense, getFormattedPrice } =
     useExpenses()
 
-  const items = expenses['1'].items
+  const items = expenses[tableId].items
 
   if (!items.length) return <h1>Não há nada aqui {':('}</h1>
 
@@ -25,7 +25,9 @@ export function Table() {
           <Row key={id}>
             <Cell
               isChangeable
-              onChange={(value) => editExpense('1', { name: value, price, id })}
+              onChange={(value) =>
+                editExpense(tableId, { name: value, price, id })
+              }
             >
               {name}
             </Cell>
@@ -34,13 +36,13 @@ export function Table() {
               asNumber
               isChangeable
               onChange={(value) =>
-                editExpense('1', { name, price: Number(value), id })
+                editExpense(tableId, { name, price: Number(value), id })
               }
             >
               {price}
             </Cell>
 
-            <Cell asButton onClick={() => deleteExpense('1', id)}>
+            <Cell asButton onClick={() => deleteExpense(tableId, id)}>
               Excluir
             </Cell>
           </Row>
@@ -48,7 +50,7 @@ export function Table() {
 
         <Row>
           <Cell strong>Total:</Cell>
-          <Cell>{getFormattedPrice(expenses['1'].totalExpense)}</Cell>
+          <Cell>{getFormattedPrice(expenses[tableId].totalExpense)}</Cell>
         </Row>
       </tbody>
     </S.Table>

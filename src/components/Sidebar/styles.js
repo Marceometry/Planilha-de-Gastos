@@ -1,4 +1,3 @@
-import { Link as a } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Sidebar = styled.aside`
@@ -18,7 +17,7 @@ export const Nav = styled.nav`
   flex-direction: column;
 `
 
-export const Link = styled(a)`
+export const Link = styled.a`
   width: 100%;
   padding: 1rem;
   padding-left: 3rem;

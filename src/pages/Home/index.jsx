@@ -1,11 +1,11 @@
-import { Layout } from '../../layout'
 import { AddItem, Table } from '../../components'
+import { Layout } from '../../layout'
 
-export function Monthly() {
+export function Home() {
   return (
     <Layout>
       <AddItem />
-      <Table />
+      <Table tableId='1' />
     </Layout>
   )
 }
