@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Sidebar = styled.aside`
+  max-width: 400px;
   height: 100vh;
   border-right: 1px solid ${({ theme }) => theme.borderColor};
   background: ${({ theme }) => theme.secondaryBackground};
@@ -23,9 +24,19 @@ export const Link = styled.a`
   padding-left: 3rem;
   font-size: 1.25rem;
   font-weight: ${({ active }) => active && 'bold'};
-  filter: ${({ active }) => active && 'brightness(1.1)'};
   background-color: ${({ theme, active }) => active && theme.primaryBackground};
   transition: background-color 0.2s;
+  position: relative;
+
+  &::before {
+    ${({ active }) => active && 'content: "";'}
+    background-color: ${({ theme }) => theme.borderColor};
+    width: 6px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 
   &:hover {
     background-color: ${({ theme }) => theme.primaryBackground};

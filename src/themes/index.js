@@ -9,7 +9,7 @@ export const themes = {
     colors,
     fontColor: '#111',
     primaryBackground: '#eee',
-    secondaryBackground: '#ddd',
+    secondaryBackground: '#e2e2e2',
     borderColor: '#111',
   },
   dark: {
