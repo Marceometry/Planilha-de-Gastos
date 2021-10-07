@@ -15,7 +15,7 @@ export const ExpensesContext = createContext({})
 export function ExpensesProvider({ children }) {
   const [expenses, setExpenses] = useState(() => {
     const storedData = localStorage.getItem('expenses')
-    return JSON.parse(storedData) || initialData
+    return JSON.parse(storedData) || []
   })
 
   useEffect(() => {
