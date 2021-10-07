@@ -22,7 +22,7 @@ export const Link = styled.a`
   width: 100%;
   padding: 1rem;
   padding-left: 3rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: ${({ active }) => active && 'bold'};
   background-color: ${({ theme, active }) => active && theme.primaryBackground};
   transition: background-color 0.2s;
