@@ -36,6 +36,8 @@ Este app tem o objetivo de organizar os gastos do usuário, totalmente customiz�
 - Editar os nomes e preços dos itens
 - Editar nome da tabela
 - Navegação dinâmica utilizando react-router-dom.
+- Gerenciamento do estado da aplicação feito através da Context-API
+- Dados são salvos no Local Storage
 
 ## 🚀 Como executar
 
