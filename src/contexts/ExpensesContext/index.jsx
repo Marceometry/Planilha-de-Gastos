@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { initialData } from './utils'
 import {
   getTableById as getTableCallback,
   addTable as addTableCallback,
   editTableName as editTableNameCallback,
+  duplicateTable as duplicateTableCallback,
   deleteTable as deleteTableCallback,
-  addItem as addItemCallback,
+  addExpense as addExpenseCallback,
   editExpense as editExpenseCallback,
+  duplicateExpense as duplicateExpenseCallback,
   deleteExpense as deleteExpenseCallback,
 } from './core'
 
@@ -15,7 +16,7 @@ export const ExpensesContext = createContext({})
 export function ExpensesProvider({ children }) {
   const [expenses, setExpenses] = useState(() => {
     const storedData = localStorage.getItem('expenses')
-    return JSON.parse(storedData) || initialData
+    return JSON.parse(storedData) || []
   })
 
   useEffect(() => {
@@ -37,18 +38,28 @@ export function ExpensesProvider({ children }) {
     setExpenses(data)
   }
 
+  function duplicateTable(tableId) {
+    const data = duplicateTableCallback(expenses, tableId)
+    setExpenses(data)
+  }
+
   function deleteTable(id) {
     const data = deleteTableCallback(expenses, id)
     setExpenses(data)
   }
 
-  function addItem(tableId, { name, price }) {
-    const data = addItemCallback(expenses, tableId, { name, price })
+  function addExpense(tableId, item) {
+    const data = addExpenseCallback(expenses, tableId, item)
     setExpenses(data)
   }
 
-  function editExpense(tableId, { name, price, id }) {
-    const data = editExpenseCallback(expenses, tableId, { name, price, id })
+  function editExpense(tableId, item) {
+    const data = editExpenseCallback(expenses, tableId, item)
+    setExpenses(data)
+  }
+
+  function duplicateExpense(tableId, itemId) {
+    const data = duplicateExpenseCallback(expenses, tableId, itemId)
     setExpenses(data)
   }
 
@@ -58,9 +69,11 @@ export function ExpensesProvider({ children }) {
   }
 
   function getTotalExpense() {
-    return expenses.reduce((totalExpense, item) => {
+    const totalExpense = expenses.reduce((totalExpense, item) => {
       return totalExpense + item.totalExpense
     }, 0)
+
+    return Number(totalExpense.toFixed(2))
   }
 
   function getTotalItems() {
@@ -73,22 +86,24 @@ export function ExpensesProvider({ children }) {
     return `R$ ${price}`
   }
 
+  const providerValue = {
+    expenses,
+    getTableById,
+    addTable,
+    editTableName,
+    duplicateTable,
+    deleteTable,
+    addExpense,
+    editExpense,
+    duplicateExpense,
+    deleteExpense,
+    getFormattedPrice,
+    getTotalExpense,
+    getTotalItems,
+  }
+
   return (
-    <ExpensesContext.Provider
-      value={{
-        expenses,
-        getTableById,
-        addTable,
-        editTableName,
-        deleteTable,
-        addItem,
-        editExpense,
-        deleteExpense,
-        getFormattedPrice,
-        getTotalExpense,
-        getTotalItems,
-      }}
-    >
+    <ExpensesContext.Provider value={providerValue}>
       {children}
     </ExpensesContext.Provider>
   )

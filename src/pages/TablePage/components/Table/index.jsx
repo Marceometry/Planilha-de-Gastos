@@ -8,7 +8,8 @@ import {
 } from '../../../../components'
 
 export function Table({ table }) {
-  const { editExpense, deleteExpense, getFormattedPrice } = useExpenses()
+  const { editExpense, duplicateExpense, deleteExpense, getFormattedPrice } =
+    useExpenses()
 
   const items = table.items
 
@@ -42,7 +43,7 @@ export function Table({ table }) {
             withIcons={[
               {
                 icon: <MdContentCopy />,
-                onClick: () => console.log(table.id, id),
+                onClick: () => duplicateExpense(table.id, id),
                 label: 'Duplicar',
               },
               {

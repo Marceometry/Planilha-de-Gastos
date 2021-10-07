@@ -4,14 +4,14 @@ import { Form as FormWrapper } from '../../../../components'
 
 export function Form({ tableId: id }) {
   const [item, setItem] = useState({ name: '', price: '' })
-  const { addItem } = useExpenses()
+  const { addExpense } = useExpenses()
 
   useEffect(() => {
     setItem({ name: '', price: '' })
   }, [id])
 
   return (
-    <FormWrapper onSubmit={() => addItem(id, item)}>
+    <FormWrapper onSubmit={() => addExpense(id, item)}>
       <input
         type='text'
         value={item.name}

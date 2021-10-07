@@ -1,5 +1,5 @@
 import { useExpenses } from '../../../../contexts'
-import { MdDelete } from 'react-icons/md'
+import { MdContentCopy, MdDelete } from 'react-icons/md'
 import {
   Table as TableWrapper,
   Row,
@@ -11,6 +11,7 @@ export function Table() {
   const {
     expenses,
     editTableName,
+    duplicateTable,
     deleteTable,
     getFormattedPrice,
     getTotalExpense,
@@ -34,6 +35,11 @@ export function Table() {
 
           <Cell
             withIcons={[
+              {
+                icon: <MdContentCopy />,
+                onClick: () => duplicateTable(id),
+                label: 'Duplicar',
+              },
               {
                 icon: <MdDelete />,
                 onClick: () => deleteTable(id),

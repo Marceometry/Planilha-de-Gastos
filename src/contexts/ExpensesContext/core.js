@@ -1,12 +1,8 @@
-import {
-  generateId,
-  getIndexOfTable,
-  getTotalPrice,
-  updateExpenses,
-} from './utils'
+import { generateId, updateExpenses } from './utils'
 
+/////////// table functions ///////////
 export function getTableById(expenses, tableId) {
-  const index = getIndexOfTable(expenses, tableId)
+  const index = expenses.findIndex((item) => item.id === tableId)
   return expenses[index]
 }
 
@@ -35,15 +31,34 @@ export function editTableName(expenses, tableId, name) {
   return data
 }
 
+export function duplicateTable(expenses, tableId) {
+  const index = expenses.findIndex((table) => table.id === tableId)
+  const table = getTableById(expenses, tableId)
+
+  const tablesFromStart = expenses.slice(0, index + 1)
+  const tablesFromEnd = expenses.slice(index + 1, expenses.length)
+
+  const data = [
+    ...tablesFromStart,
+    { ...table, id: generateId() },
+    ...tablesFromEnd,
+  ]
+
+  console.log(data)
+
+  return data
+}
+
 export function deleteTable(expenses, tableId) {
   return expenses.filter((item) => item.id !== tableId)
 }
 
-export function addItem(expenses, tableId, { name, price }) {
-  const index = getIndexOfTable(expenses, tableId)
+/////////// expenses functions ///////////
+export function addExpense(expenses, tableId, { name, price }) {
+  const table = getTableById(expenses, tableId)
 
   const items = [
-    ...expenses[index].items,
+    ...table.items,
     {
       name,
       price: Number(price),
@@ -51,36 +66,49 @@ export function addItem(expenses, tableId, { name, price }) {
     },
   ]
 
-  const totalExpense = getTotalPrice(items)
-
-  const data = updateExpenses(expenses, tableId, items, totalExpense)
+  const data = updateExpenses(expenses, tableId, items)
 
   return data
 }
 
 export function editExpense(expenses, tableId, { name, price, id }) {
-  const index = getIndexOfTable(expenses, tableId)
-  const originalItems = expenses[index].items
+  const table = getTableById(expenses, tableId)
+  const originalItems = table.items
 
   const items = originalItems.map((item) => {
     if (item.id !== id) return item
     return { name, price, id }
   })
 
-  const totalExpense = getTotalPrice(items)
+  const data = updateExpenses(expenses, tableId, items)
 
-  const data = updateExpenses(expenses, tableId, items, totalExpense)
+  return data
+}
+
+export function duplicateExpense(expenses, tableId, itemId) {
+  const table = getTableById(expenses, tableId)
+  const index = table.items.findIndex((item) => item.id === itemId)
+  const item = table.items.filter((item) => item.id === itemId)
+
+  const itemsFromStart = table.items.slice(0, index + 1)
+  const itemsFromEnd = table.items.slice(index + 1, table.items.length)
+
+  const items = [
+    ...itemsFromStart,
+    { ...item[0], id: generateId() },
+    ...itemsFromEnd,
+  ]
+
+  const data = updateExpenses(expenses, tableId, items)
 
   return data
 }
 
 export function deleteExpense(expenses, tableId, itemId) {
-  const index = getIndexOfTable(expenses, tableId)
-  const items = expenses[index].items.filter((item) => item.id !== itemId)
+  const table = getTableById(expenses, tableId)
+  const items = table.items.filter((item) => item.id !== itemId)
 
-  const totalExpense = getTotalPrice(items)
-
-  const data = updateExpenses(expenses, tableId, items, totalExpense)
+  const data = updateExpenses(expenses, tableId, items)
 
   return data
 }
