@@ -24,6 +24,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
+<h4> Acesse em: https://planilha-de-gastos.vercel.app </h4>
+
 Este app tem o objetivo de organizar os gastos do usuário, totalmente customizável, feito com ReactJS e Styled-Components.
 
 ## 💣 Funcionalidades
