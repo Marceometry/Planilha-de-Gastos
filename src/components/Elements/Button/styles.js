@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const StyledButton = styled.button`
+const defaultButtonCSS = css`
   transition: all 0.2s;
   padding: 8px 24px;
   border-radius: 8px;
@@ -18,16 +18,29 @@ export const StyledButton = styled.button`
   }
 `
 
-export const IconButton = styled.button`
+const iconButtonCSS = css`
   font-size: 0;
-  transition: transform 0.2s;
 
   svg {
     width: ${({ size }) => size};
     height: ${({ size }) => size};
   }
+`
+
+export const StyledButton = styled.button`
+  ${defaultButtonCSS}
+`
+
+export const IconButton = styled.button`
+  ${iconButtonCSS}
+  transition: transform 0.2s;
 
   &:hover {
     transform: scale(1.1);
   }
+`
+
+export const IconButtonWithBackground = styled.button`
+  ${defaultButtonCSS}
+  ${iconButtonCSS}
 `

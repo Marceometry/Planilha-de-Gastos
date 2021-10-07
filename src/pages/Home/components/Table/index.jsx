@@ -1,5 +1,5 @@
 import { useExpenses } from '../../../../contexts'
-import { MdContentCopy, MdDelete } from 'react-icons/md'
+import { MdContentCopy, MdDeleteOutline } from 'react-icons/md'
 import {
   Table as TableWrapper,
   Row,
@@ -38,12 +38,12 @@ export function Table() {
               {
                 icon: <MdContentCopy />,
                 onClick: () => duplicateTable(id),
-                label: 'Duplicar',
+                title: 'Duplicar',
               },
               {
-                icon: <MdDelete />,
+                icon: <MdDeleteOutline />,
                 onClick: () => deleteTable(id),
-                label: 'Excluir',
+                title: 'Excluir',
               },
             ]}
           />

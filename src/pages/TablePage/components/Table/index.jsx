@@ -44,12 +44,12 @@ export function Table({ table }) {
               {
                 icon: <MdContentCopy />,
                 onClick: () => duplicateExpense(table.id, id),
-                label: 'Duplicar',
+                title: 'Duplicar',
               },
               {
                 icon: <MdDelete />,
                 onClick: () => deleteExpense(table.id, id),
-                label: 'Excluir',
+                title: 'Excluir',
               },
             ]}
           ></Cell>

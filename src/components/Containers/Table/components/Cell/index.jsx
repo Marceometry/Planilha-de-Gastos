@@ -10,7 +10,7 @@ export function Cell(props) {
       {withIcons && (
         <S.IconsWrapper>
           {withIcons?.map((props) => (
-            <Button withIcon key={props.label} {...props}>
+            <Button withIcon key={props.title} {...props}>
               {props.icon}
             </Button>
           ))}

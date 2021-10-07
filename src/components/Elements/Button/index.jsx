@@ -1,15 +1,21 @@
-import { StyledButton, IconButton } from './styles'
+import { StyledButton, IconButton, IconButtonWithBackground } from './styles'
 
 export function Button(props) {
-  const { children, withIcon } = props
+  const { children, withIcon, iconWithBackground, iconSize = '1.5rem' } = props
 
   if (withIcon) {
-    const { label, iconSize = '1.5rem' } = props
-
     return (
-      <IconButton title={label} size={iconSize} {...props}>
+      <IconButton size={iconSize} {...props}>
         {children}
       </IconButton>
+    )
+  }
+
+  if (iconWithBackground) {
+    return (
+      <IconButtonWithBackground size={iconSize} {...props}>
+        {children}
+      </IconButtonWithBackground>
     )
   }
 
