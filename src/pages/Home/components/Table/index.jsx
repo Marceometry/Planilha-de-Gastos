@@ -1,4 +1,5 @@
 import { useExpenses } from '../../../../contexts'
+import { MdDelete } from 'react-icons/md'
 import {
   Table as TableWrapper,
   Row,
@@ -31,9 +32,15 @@ export function Table() {
 
           <Cell>{items.length}</Cell>
 
-          <Cell asButton onClick={() => deleteTable(id)}>
-            Excluir
-          </Cell>
+          <Cell
+            withIcons={[
+              {
+                icon: <MdDelete />,
+                onClick: () => deleteTable(id),
+                label: 'Excluir',
+              },
+            ]}
+          />
         </Row>
       ))}
 

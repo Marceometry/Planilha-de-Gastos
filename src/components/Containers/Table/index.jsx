@@ -9,7 +9,7 @@ export function Table({ children, headers }) {
           {headers?.map((item) => (
             <Header key={item}>{item}</Header>
           ))}
-          <Header />
+          <Header>Opções</Header>
         </Row>
       </thead>
 

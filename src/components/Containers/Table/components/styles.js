@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const cellPadding = '1.5rem 2rem'
-const asButtonPadding = '.25rem 2rem'
 
 export const Row = styled.tr`
   &:nth-child(even) {
@@ -16,14 +15,21 @@ export const Header = styled.th`
 
 export const Cell = styled.td`
   border: 1px solid ${({ theme }) => theme.borderColor};
-  width: ${({ asButton }) => (asButton ? 'fit-content' : '')};
-  text-align: ${({ asButton }) => (asButton ? 'center' : '')};
-  padding: ${({ isChangeable, asButton }) =>
-    isChangeable ? 0 : asButton ? asButtonPadding : cellPadding};
+  width: ${({ withIcons }) => (withIcons ? 'fit-content' : '')};
+  text-align: ${({ withIcons }) => (withIcons ? 'center' : '')};
+  padding: ${({ isChangeable }) => (isChangeable ? 0 : cellPadding)};
+`
+
+export const IconsWrapper = styled.div`
+  gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 export const Input = styled.input`
   padding: ${cellPadding};
+  line-height: 1.5rem;
   border: none;
   background: transparent;
 `
