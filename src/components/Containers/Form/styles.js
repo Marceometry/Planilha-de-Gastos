@@ -13,5 +13,6 @@ export const Inputs = styled.div`
 
   input {
     border-radius: 4px;
+    padding: 0.5rem 1rem;
   }
 `

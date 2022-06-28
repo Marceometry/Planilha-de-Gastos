@@ -5,9 +5,18 @@ export const Sidebar = styled.aside`
   height: 100vh;
   border-right: 1px solid ${({ theme }) => theme.borderColor};
   background: ${({ theme }) => theme.secondaryBackground};
+
+  @media (max-width: 1400px) {
+    max-width: 320px;
+
+    h1 {
+      font-size: 1.75rem;
+    }
+  }
 `
 
 export const Title = styled.div`
+  height: 102px;
   padding: 2rem;
   border-bottom: 1px solid ${({ theme }) => theme.borderColor};
 `

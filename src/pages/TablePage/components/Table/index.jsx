@@ -16,39 +16,50 @@ export function Table({ table }) {
   if (!items.length)
     return <ErrorMessage>Não há nada aqui por enquanto {':('}</ErrorMessage>
 
+  const data = items.sort((a, b) => Number(b.date) - Number(a.date))
+
   return (
-    <TableWrapper headers={['Item', 'Preço']}>
-      {items.map(({ name, price, id }) => (
-        <Row key={id}>
+    <TableWrapper headers={['Item', 'Preço', 'Data']}>
+      {data.map((expense) => (
+        <Row key={expense.id}>
           <Cell
             isChangeable
             onChange={(value) =>
-              editExpense(table.id, { name: value, price, id })
+              editExpense(table.id, { ...expense, name: value })
             }
           >
-            {name}
+            {expense.name}
           </Cell>
 
           <Cell
             asNumber
             isChangeable
             onChange={(value) =>
-              editExpense(table.id, { name, price: Number(value), id })
+              editExpense(table.id, { ...expense, price: Number(value) })
             }
           >
-            {price}
+            {expense.price}
+          </Cell>
+
+          <Cell
+            isChangeable
+            onChange={(value) =>
+              editExpense(table.id, { ...expense, date: value })
+            }
+          >
+            {expense.date}
           </Cell>
 
           <Cell
             withIcons={[
               {
                 icon: <MdContentCopy />,
-                onClick: () => duplicateExpense(table.id, id),
+                onClick: () => duplicateExpense(table.id, expense.id),
                 title: 'Duplicar',
               },
               {
                 icon: <MdDeleteOutline />,
-                onClick: () => deleteExpense(table.id, id),
+                onClick: () => deleteExpense(table.id, expense.id),
                 title: 'Excluir',
               },
             ]}

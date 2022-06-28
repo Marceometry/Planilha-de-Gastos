@@ -54,12 +54,13 @@ export function deleteTable(expenses, tableId) {
 }
 
 /////////// expenses functions ///////////
-export function addExpense(expenses, tableId, { name, price }) {
+export function addExpense(expenses, tableId, { name, price, date }) {
   const table = getTableById(expenses, tableId)
 
   const items = [
     ...table.items,
     {
+      date,
       name,
       price: Number(price),
       id: generateId(),
@@ -71,13 +72,13 @@ export function addExpense(expenses, tableId, { name, price }) {
   return data
 }
 
-export function editExpense(expenses, tableId, { name, price, id }) {
+export function editExpense(expenses, tableId, { name, price, date, id }) {
   const table = getTableById(expenses, tableId)
   const originalItems = table.items
 
   const items = originalItems.map((item) => {
     if (item.id !== id) return item
-    return { name, price, id }
+    return { name, price, date, id }
   })
 
   const data = updateExpenses(expenses, tableId, items)

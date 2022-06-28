@@ -3,11 +3,11 @@ import { useExpenses } from '../../../../contexts'
 import { Form as FormWrapper } from '../../../../components'
 
 export function Form({ tableId: id }) {
-  const [item, setItem] = useState({ name: '', price: '' })
+  const [item, setItem] = useState({ name: '', price: '', date: '' })
   const { addExpense } = useExpenses()
 
   useEffect(() => {
-    setItem({ name: '', price: '' })
+    setItem({ name: '', price: '', date: '' })
   }, [id])
 
   return (
@@ -24,6 +24,13 @@ export function Form({ tableId: id }) {
         value={item.price}
         onChange={(e) => setItem({ ...item, price: e.target.value })}
         placeholder='Preço do item'
+      />
+
+      <input
+        type='text'
+        value={item.date}
+        onChange={(e) => setItem({ ...item, date: e.target.value })}
+        placeholder='Data de compra'
       />
     </FormWrapper>
   )
